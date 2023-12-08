@@ -39,9 +39,13 @@ function Open-NvimDistributionConfig()
     $config = "nvim"
   }
 
+  $originalLocation = Get-Location
+
   Set-Location "$env:LOCALAPPDATA\$config"
 
   Open-NvimDistribution @args
+
+  Set-Location $originalLocation
 }
 
 function Get-EnvNvimDistributions()
