@@ -1,5 +1,28 @@
 # Neovim Configuration Switcher
 
-With this PowerShell module, you can switch between different Neovim configuration enviroments!
+Neovim Switcher is a utility PowerShell module for switching between different Neovim configuration environments.
 
-Embed this module into your PowerShell config and add aliases to the functions exported from the module.
+## 🛠️ Installation
+
+### Windows (Powershell)
+
+#### Clone the repository
+
+```pwsh
+git clone --depth 1 https://github.com/Nitestack/Nvim-Switcher $env:USERPROFILE\Documents\PowerShell\Modules\Nvim-Switcher
+```
+
+#### Include it in your PowerShell config:
+
+```pwsh
+Import-Module Nvim-Switcher
+```
+
+## 📖 Documentation
+
+### Commands
+
+- `nvims` or `nvs`: Select configuration to start Neovim with
+- `nvims-add` or `nvs-add`: Download a Neovim configuration
+- `nvims-del` or `nvs-del`: Uninstalls a Neovim configuration
+- `nvims-c` or `nvc`: Configure a Neovim configuration
