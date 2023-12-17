@@ -8,7 +8,7 @@ Set-Alias nvims-add Import-NvimDistribution
 Set-Alias nvs-add Import-NvimDistribution
 Set-Alias nvims-del Remove-NvimDistribution
 Set-Alias nvs-del Remove-NvimDistribution
-Set-Alias nvimconfig Open-NvimDistributionConfig
+Set-Alias nvims-c Open-NvimDistributionConfig
 Set-Alias nvc Open-NvimDistributionConfig
 
 # Switcher
@@ -101,8 +101,24 @@ function Remove-EnvNvimDistribution([string]$distribution)
   Write-Host "Removed '$distribution' distribution from user environment variable ..."
 }
 
-function Import-NvimDistribution([string]$repository, [string]$distribution)
+function Import-NvimDistribution()
 {
+  # Input 
+  $distribution = Read-Host -Prompt "Enter a distribution name"
+  # If the string is empty, close prompt
+  if ([string]::IsNullOrEmpty($distribution)) 
+  {
+    Write-Host "Cancelled!"
+    break
+  }
+  $repository = Read-Host -Prompt "Enter a repository URL"
+  # If the string is empty, close prompt
+  if ([string]::IsNullOrEmpty($repository)) 
+  {
+    Write-Host "Cancelled!"
+    break
+  }
+
   # If the string is either empty or "Main" was selected, set the env to an empty string
   if ([string]::IsNullOrEmpty($distribution) -or ($distribution.ToLower() -eq "main"))
   {
@@ -144,3 +160,5 @@ function Remove-NvimDistribution()
 }
 
 Export-ModuleMember -Alias * -Function Open-NvimDistribution, Open-NvimDistributionConfig, Import-NvimDistribution, Remove-NvimDistribution
+
+
